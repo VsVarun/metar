@@ -3,6 +3,7 @@ package com.ee.metar;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -28,10 +29,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
         in = SecuritySchemeIn.HEADER
 )*/
 @OpenAPIDefinition(
-        info = @Info(
-                title = "metar",
-                version = "${build.version}",
-                description = "Application that continuously loads and stores a subset of METAR data for the subscribed airports")
+    info = @Info(
+    title = "metar",
+    version = "${build.version}",
+    description = "Application that continuously loads and stores a subset of METAR data for the subscribed airports"),
+    servers = { @Server(url = "https://vc-iot.app/metar"), @Server(url = "http://localhost:13131/metar") }
 )
 @EnableScheduling
 @EnableAsync
