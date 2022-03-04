@@ -1,0 +1,42 @@
+#docker network create -d bridge --subnet "25.0.0.0/24" metar
+#docker-compose up -d
+version: "3"
+networks:
+  default:
+    external:
+      name: metar
+  metar:
+    external: true
+services:
+  metar-db:
+    image: postgres:12.3-alpine
+    hostname: metar-db
+    container_name: metar-db
+    tty: true
+    privileged: true
+    environment:
+      POSTGRES_PASSWORD: metar
+      POSTGRES_USER: metar
+      POSTGRES_DB: metar
+    ports:
+      - "8001:5432"
+    networks:
+      metar:
+        ipv4_address: 25.0.0.51
+  metar-service:
+    depends_on:
+      - metar-db
+    image: openjdk:15-alpine3.12
+    hostname: metar-service
+    container_name: metar-service
+    tty: true
+    privileged: true
+    ports:
+      - "13131:13131"
+    volumes:
+      - "./share:/metar"
+    command: >
+      sh -c "java -jar /metar/metar.jar"
+    networks:
+      metar:
+        ipv4_address: 25.0.0.52

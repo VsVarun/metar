@@ -1,0 +1,6 @@
+${AnsiColor.BRIGHT_WHITE}-------------------------------------------------------
+${AnsiColor.BRIGHT_RED}@Author 	: Varun Chandresekar
+${AnsiColor.BRIGHT_CYAN}@Version	: 1.0
+${AnsiColor.BRIGHT_GREEN}Spring Boot	:${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_YELLOW}Application	: [METAR]
+${AnsiColor.BRIGHT_WHITE}-------------------------------------------------------
