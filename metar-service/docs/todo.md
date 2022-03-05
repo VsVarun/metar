@@ -23,7 +23,4 @@
 METAR DECODER
     https://e6bx.com/metar-decoder/
 
-Alpine crontab
-https://stackoverflow.com/questions/37015624/how-to-run-a-cron-job-inside-a-docker-container
-
 https://www.aviationweather.gov/dataserver/fields?datatype=metar

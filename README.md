@@ -1,3 +1,5 @@
+### 📚 [Demo](https://vc-iot.app/metar/api-docs/swagger-ui/index.html)
+
 ## METAR Service
 A service that continuously loads and stores a subset of METAR data for the
 subscribed airports, and makes that data available to clients on request.
