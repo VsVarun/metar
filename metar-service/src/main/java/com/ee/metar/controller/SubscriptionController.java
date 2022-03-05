@@ -65,5 +65,21 @@ public class SubscriptionController {
         subscriptionService.evictSubscriptions();
     }
 
+    /**
+     * Endpoint to activate / deactivate station/icaoCode for Metar Data
+     *
+     * @param icaoCode icaoCode
+     * @param subscriptionDTO subscriptionDTO
+     * @throws MetarException
+     */
+    @PutMapping("/subscriptions/{icaoCode}")
+    public void activate(@PathVariable("icaoCode") String icaoCode, @RequestBody SubscriptionDTO subscriptionDTO) throws MetarException {
+        Subscription subscription = new Subscription();
+        subscription.setIcaoCode(icaoCode);
+        subscription.setActive(subscriptionDTO.getActive());
+        subscriptionService.subscribe(subscription);
+        subscriptionService.evictSubscriptions();
+    }
+
 
 }
